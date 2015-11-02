@@ -1,0 +1,17 @@
+{
+    "contents" : "library(caret)\nlibrary(AppliedPredictiveModeling)\nset.seed(3433)\ndata(AlzheimerDisease)\nadData = data.frame(diagnosis,predictors)\ninTrain = createDataPartition(adData$diagnosis, p = 3/4)[[1]]\ntraining = adData[ inTrain,]\ntesting = adData[-inTrain,]\n\ntrn_data <- NULL\ntrn_data$diagnosis <- training[[1]]\ntrn_data <- cbind(trn_data, select(training, starts_with(\"IL\")))\n\ntest_data <- NULL\ntest_data$diagnosis <- testing[[1]]\ntest_data <- cbind(test_data, select(testing, starts_with(\"IL\")))\n\nasis_fit <- train(diagnosis ~ . , \n              method=\"glm\", \n              data=trn_data)\n\npreProc <- preProcess(trn_data, method=\"pca\", thresh = 0.80)\ntrn_pred <- predict(preProc, train_data)\npca_fit <- train(diagnosis ~ . , \n               method=\"glm\",\n               data=trn_pred)\n\n\n# test_pred <- predict(preProc, test_data)\n# cm <- confusionMatrix(testing$diagnosis,predict(modelFit,test_pred))\n\nprint(\"As_Is\")\nprint(asis_fit)\nprint(\"PCA\")\nprint(pca_fit)",
+    "created" : 1444944632805.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "267066847",
+    "id" : "7093188A",
+    "lastKnownWriteTime" : 1444945033,
+    "path" : "C:/GitHub/Coursera/pml_learn/junk2.R",
+    "project_path" : "junk2.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : true,
+    "type" : "r_source"
+}

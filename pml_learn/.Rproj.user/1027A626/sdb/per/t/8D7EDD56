@@ -1,0 +1,18 @@
+{
+    "contents" : "library(pgmm)\nlibrary(rpart)\nlibrary(tree)\n\ndata(olive)\nolive = olive[,-1]\n\n\n\notree <- rpart(Area ~ . , data=olive, method=\"class\")\n\nwhere <- plot(otree, newdata = as.data.frame(t(colMeans(olive))), type=\"prob\")",
+    "created" : 1444945216878.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4117545704",
+    "id" : "8D7EDD56",
+    "lastKnownWriteTime" : 1444945759,
+    "path" : "C:/GitHub/Coursera/pml_learn/junk3.R",
+    "project_path" : "junk3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : true,
+    "type" : "r_source"
+}
